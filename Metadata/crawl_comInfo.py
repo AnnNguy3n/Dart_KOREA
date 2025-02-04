@@ -4,6 +4,7 @@ from io import StringIO
 import pandas as pd
 from tqdm import tqdm
 import time
+import sys
 
 
 def get_company_info(popup_href):
@@ -34,7 +35,11 @@ if __name__ == "__main__":
     with open("popup_hrefs.txt", "r") as f:
         popup_hrefs = f.read().splitlines()
 
-    session_id = 0
+    ### Get session_id from sys.argv
+    session_id = int(sys.argv[1])
+    print(f"Session ID: {session_id}")
+    # raise
+
     start_index = 1223 * session_id
     end_index = start_index + 1223
     print(len(popup_hrefs), start_index, end_index)
